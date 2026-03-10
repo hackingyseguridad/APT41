@@ -21,7 +21,7 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Puertos: 80,443,
 
 5 - **Ivanti VPN, Pulse VPN, Juniper VPN, routers Juniper SRX**
-    Vulnerabilidad: CVE-2025-5777, CVE-2023-46805, CVE-2024-21887, CVE-2025-22457
+    Vulnerabilidad: CVE-2025-5777, CVE-2023-46805, CVE-2024-21887, CVE-2025-22457, CVE-2023-46805, CVE-2024-21887
     Puertos: 80,443,
 
 6 - **Microsoft Exchange Server**
