@@ -39,4 +39,6 @@ otras técnicas empleadas, son ataques de autenticación fuerza bruta; algunos d
 
 en IKEv1, buscan credenciales que puedan exfiltrar, para acceso.
 
-Linux sin soporte (CentOS 6.4)
+Una vez dentro, el grupo despliega un repertorio de malware y tácticas muy específicas para mantener el acceso y robar datos sigilosamente
+
+
