@@ -32,6 +32,6 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Vulnerabilidad: CVE-2026-1498
     Puertos: 80,443,8080,4117
 
--	otras técnicas empleadas, son ataques de autenticación fuerza bruta; algunos de estos activos tienen a su vez expuestos servicios vulnerables, como telnet, ssh, rdp ..
+otras técnicas empleadas, son ataques de autenticación fuerza bruta; algunos de estos activos tienen a su vez expuestos servicios vulnerables, como telnet, ssh, rdp ..
 
--	en IKEv1, buscan credenciales que puedan exfiltrar, para acceso.
+en IKEv1, buscan credenciales que puedan exfiltrar, para acceso.
