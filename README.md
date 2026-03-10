@@ -28,11 +28,11 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Vulnerabilidad: CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065, ProxyLogon (CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065)
     Puertos: 80,443,
 
-7 - WatchGuard Firewall
+7 - **WatchGuard Firewall**
     Vulnerabilidad: CVE-2026-1498
     Puertos: 80,443,8080,4117
 
-8 - Zoho ManageEngine Desktop Central
+8 - **Zoho ManageEngine Desktop Central**
     Vulnerabilidad: CVE-2020-10189 
 
 otras técnicas empleadas, son ataques de autenticación fuerza bruta; algunos de estos activos tienen a su vez expuestos servicios vulnerables, como telnet, ssh, rdp ..
