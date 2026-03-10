@@ -25,7 +25,7 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Puertos: 80,443,
 
 6 - **Microsoft Exchange Server**
-    Vulnerabilidad: CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065
+    Vulnerabilidad: CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065, ProxyLogon (CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065)
     Puertos: 80,443,
 
 7 - WatchGuard Firewall
