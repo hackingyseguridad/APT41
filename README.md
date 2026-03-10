@@ -5,7 +5,7 @@
 se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el perimetro, como:  routers, switch, con vulnerabilidades CVE conocidas, de fácil explotación que permitan tomar acceso para luego moverse dentro de la red escalado de privilegios e ir consiguiendo persistencia. - El objetivo final es pasar desapercibido y exfiltrar información;  
 
 1 - Cisco: Routers, switches y firewall Cisco ASA con IOS XE y NX-OS
-    Vulnerabilidades: CVE-2023-20198, CVE-2023-20273, CVE-2025-20352
+    Vulnerabilidades: CVE-2023-20198, CVE-2023-20273, CVE-2025-20352, CVE-2019-1652, CVE-2019-1653
     Puertos: 80,161,443,500,1194,1500,1701,1723,4500,4786,51820
 
 2 - FW Fortinet VPN
@@ -35,3 +35,5 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
 otras técnicas empleadas, son ataques de autenticación fuerza bruta; algunos de estos activos tienen a su vez expuestos servicios vulnerables, como telnet, ssh, rdp ..
 
 en IKEv1, buscan credenciales que puedan exfiltrar, para acceso.
+
+Linux sin soporte (CentOS 6.4)
