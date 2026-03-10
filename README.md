@@ -12,11 +12,11 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Vulnerabilidad: CVE-2023-48788.
     Puertos: 80,161,443,8443,8013,10443
 
-3 - Sophos Firewall
-    Vulnerabilidad: CVE-2022-3236
+3 - **Sophos Firewall**
+    Vulnerabilidad: CVE-2022-3236, CVE-2020-12271 (Asnarök), CVE-2020-15069, CVE-2020-29574
     Puertos: 80,443,4444
 
-4 - Citrix NetScaler Gateway
+4 - **Citrix NetScaler Gateway**
     Vulnerabilidad: CVE-2025-5777 CitrixBleed 2
     Puertos: 80,443,
 
