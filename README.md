@@ -20,11 +20,11 @@ se centra para el acceso inicial en Firewall VPN y otros equipos expuestos en el
     Vulnerabilidad: CVE-2025-5777 CitrixBleed 2, CVE-2019-19781 
     Puertos: 80,443,
 
-5 - Ivanti VPN, Pulse VPN, Juniper VPN, routers Juniper SRX
+5 - **Ivanti VPN, Pulse VPN, Juniper VPN, routers Juniper SRX**
     Vulnerabilidad: CVE-2025-5777, CVE-2023-46805, CVE-2024-21887, CVE-2025-22457
     Puertos: 80,443,
 
-6 - Microsoft Exchange Server
+6 - **Microsoft Exchange Server**
     Vulnerabilidad: CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, CVE-2021-27065
     Puertos: 80,443,
 
