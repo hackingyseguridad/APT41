@@ -1,7 +1,6 @@
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo 
 
 https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
-https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/
 
 estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional
 
@@ -42,5 +41,24 @@ El acceso inicial apunta consistentemente a infraestructura perimetral: VPNs Iva
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición.
 
 Se recomienda encarecidamente a los defensores ampliar la visibilidad de las operaciones a nivel del kernel, la actividad de filtros BPF sin procesar y el comportamiento anómalo en puertos altos en sistemas Linux, áreas donde la mayoría de las organizaciones carecen actualmente de una profundidad de monitoreo adecuada.
+
+https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
+
+Nueva variante más sigilosa: Los comandos de activación ya no se envían como "paquetes mágicos" fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
+
+Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
+
+Comunicación lateral con ICMP: Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
+
+Suplantación de procesos legítimos: Los binarios maliciosos se hacen pasar por procesos típicos en entornos de telecomunicaciones, como el demonio de gestión de servidores HPE ProLiant (hpasmlited) o por componentes de Docker/containerd, mezclándose con las cargas de trabajo de núcleos 4G/5G.
+
+Impacto y recomendaciones:
+El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
+
+
+
+
+
+
 
 
