@@ -58,6 +58,7 @@ El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores
 
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
+https://www.youtube.com/watch?v=5kOQg-eCPu4
 
 
 
