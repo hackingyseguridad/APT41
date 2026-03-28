@@ -15,6 +15,13 @@ Las redes de telecomunicaciones transportan comunicaciones gubernamentales, aute
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
+
+Abuso de Berkeley Packet Filter (BPF) BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump.
+BPFdoor abusa de esta funcionalidad al inyectar un filtro BPF personalizado directamente en el kernel. Este filtro inspecciona silenciosamente todo el tráfico entrante sin necesidad de:
+Abrir puertos de escucha (no aparece en netstat o ss).
+Generar tráfico de comando y control (C2) visible.
+Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
+
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/4.png">
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
