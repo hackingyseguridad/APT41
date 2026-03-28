@@ -52,9 +52,9 @@ Un sofisticado mecanismo de relleno de **"regla mágica"** asegura que una caden
 
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
+<img style="float:left" alt="5" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
+<img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
+<img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
 **Suplantación a nivel de infraestructura**
 
