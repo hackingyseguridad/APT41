@@ -46,15 +46,19 @@ En el centro de esta campaña se encuentra BPFdoor, una puerta trasera sigilosa 
 
 **Paquete maquico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
+Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
+
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
 Un sofisticado mecanismo de relleno de **"regla mágica"** asegura que una cadena marcadora ("9999") siempre caiga en un desplazamiento fijo de 26 o 40 bytes dentro de los datos de solicitud inspeccionados, permitiendo que el implante sobreviva a la reescritura de cabeceras del proxy, creando efectivamente un camuflaje dinámico en la capa 7.
 
+Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
+
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 <img style="float:left" alt="5" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
-<img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
-<img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
+
+Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
 
 **Suplantación a nivel de infraestructura**
 
@@ -62,15 +66,14 @@ Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLian
 
 Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
+<img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
+
 **El acceso inicial** apunta consistentemente a infraestructura perimetral: VPNs Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición.
 
-Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
-Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
-
-Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
+<img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
 **Impacto y recomendaciones:**
 El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
