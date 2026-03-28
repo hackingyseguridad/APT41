@@ -84,6 +84,7 @@ Impacto y recomendaciones:
 El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
 Referencias:
+
 https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
