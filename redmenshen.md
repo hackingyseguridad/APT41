@@ -1,9 +1,5 @@
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF)
 
-https://www.youtube.com/shorts/BTQX9oBn3dw
-https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
-https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
-
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
 estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional
@@ -68,9 +64,13 @@ Suplantación de procesos legítimos: Los binarios maliciosos se hacen pasar por
 Impacto y recomendaciones:
 El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
+Referencias:
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
 https://www.youtube.com/watch?v=5kOQg-eCPu4
+https://www.youtube.com/shorts/BTQX9oBn3dw
+https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
+https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
 
 
 
