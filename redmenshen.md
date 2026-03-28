@@ -4,6 +4,14 @@ Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigil
 
 estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional
 
+BPFdoor: Una puerta trasera a nivel de kernel, imitan procesos legítimos en servidores bare-metal HPE ProLiant, suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
+
+Una investigación de varios meses realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado, llevada a cabo por el actor de amenazas vinculado a China, Red Menshen. Este grupo ha incrustado algunas de las "células durmientes" digitales más encubiertas jamás documentadas dentro de la infraestructura mundial de telecomunicaciones.
+
+Publicados el 26 de marzo de 2026, los hallazgos revelan un cambio deliberado desde el hacking oportunista hacia un posicionamiento a largo plazo dentro de las mismas redes troncales que sostienen las comunicaciones nacionales e internacionales.
+
+Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades de suscriptores, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
+
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
@@ -13,13 +21,7 @@ estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
 
-BPFdoor: Una puerta trasera a nivel de kernel, imitan procesos legítimos en servidores bare-metal HPE ProLiant, suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
-Una investigación de varios meses realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado, llevada a cabo por el actor de amenazas vinculado a China, Red Menshen. Este grupo ha incrustado algunas de las "células durmientes" digitales más encubiertas jamás documentadas dentro de la infraestructura mundial de telecomunicaciones.
-
-Publicados el 26 de marzo de 2026, los hallazgos revelan un cambio deliberado desde el hacking oportunista hacia un posicionamiento a largo plazo dentro de las mismas redes troncales que sostienen las comunicaciones nacionales e internacionales.
-
-Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades de suscriptores, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
 
 En su núcleo, estos entornos dependen de protocolos especializados como SS7, Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una violación de datos convencional.
 
