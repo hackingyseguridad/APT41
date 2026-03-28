@@ -52,12 +52,11 @@ A diferencia del malware convencional, BPFdoor no abre puertos de escucha ni gen
 
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
-
 Un sofisticado mecanismo de relleno de "regla mágica" asegura que una cadena marcadora ("9999") siempre caiga en un desplazamiento fijo de 26 o 40 bytes dentro de los datos de solicitud inspeccionados, permitiendo que el implante sobreviva a la reescritura de cabeceras del proxy, creando efectivamente un camuflaje dinámico en la capa 7.
 
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
@@ -73,8 +72,6 @@ Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notif
 
 Se recomienda encarecidamente a los defensores ampliar la visibilidad de las operaciones a nivel del kernel, la actividad de filtros BPF sin procesar y el comportamiento anómalo en puertos altos en sistemas Linux, áreas donde la mayoría de las organizaciones carecen actualmente de una profundidad de monitoreo adecuada.
 
-https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
-
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como "paquetes mágicos" fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
 Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
@@ -87,6 +84,7 @@ Impacto y recomendaciones:
 El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
 Referencias:
+https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
 https://www.youtube.com/watch?v=5kOQg-eCPu4
