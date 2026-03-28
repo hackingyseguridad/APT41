@@ -14,6 +14,9 @@ Las redes de telecomunicaciones transportan comunicaciones gubernamentales, aute
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
 
+eBPF significa Filtro de Paquetes Berkeley Extendido. Es una extensión del diseño original del Filtro de Paquetes Berkeley (BPF).
+eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta en el contexto del kernel, pero que se gestiona desde el espacio de usuario. Es una especie de híbrido entre las aplicaciones de espacio de usuario y los módulos del kernel de Linux. BPFDoor utiliza filtros de socket para permitir comunicaciones sigilosas. Puede recibir comandos en cualquier puerto del sistema, ya que el programa eBPF que utiliza ve todo el tráfico entrante. Symbiote también aprovecha los filtros de socket, pero de una manera diferente. Symbiote intercepta la setsockoptllamada a la función y, cuando ve la creación de un filtro de socket, inyecta su propio código para filtrar el tráfico que quiere ocultar. Esto le permite evadir herramientas de análisis de paquetes como tcpdump.
+
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
 
 Abuso de Berkeley Packet Filter (BPF) BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump.
