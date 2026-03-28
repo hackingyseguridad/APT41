@@ -5,6 +5,15 @@ https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-varian
 
 estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional
 
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/1.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/2.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/3.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/4.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/5.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/6.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/master/7.png">
+
+
 BPFdoor: Una puerta trasera a nivel de kernel, imitan procesos legítimos en servidores bare-metal HPE ProLiant, suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 Una investigación de varios meses realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado, llevada a cabo por el actor de amenazas vinculado a China, Red Menshen. Este grupo ha incrustado algunas de las "células durmientes" digitales más encubiertas jamás documentadas dentro de la infraestructura mundial de telecomunicaciones.
