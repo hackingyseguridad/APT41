@@ -15,7 +15,7 @@ Las redes de telecomunicaciones transportan comunicaciones gubernamentales, aute
 <img style="float:left" alt="2" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
 
 **eBPF significa Filtro de Paquetes Berkeley Extendido.** Es una extensión del diseño original del Filtro de Paquetes Berkeley (BPF).
-eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta en el contexto del kernel, pero que se gestiona desde el espacio de usuario. Es una especie de híbrido entre las aplicaciones de espacio de usuario y los módulos del kernel de Linux. BPFDoor utiliza filtros de socket para permitir comunicaciones sigilosas. Puede recibir comandos en cualquier puerto del sistema, ya que el programa eBPF que utiliza ve todo el tráfico entrante. Symbiote también aprovecha los filtros de socket, pero de una manera diferente. Symbiote intercepta la setsockoptllamada a la función y, cuando ve la creación de un filtro de socket, inyecta su propio código para filtrar el tráfico que quiere ocultar. Esto le permite evadir herramientas de análisis de paquetes como tcpdump.
+eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta en el contexto del kernel, pero que se gestiona desde el espacio de usuario. Es una especie de híbrido entre las aplicaciones de espacio de usuario y los módulos del kernel de Linux. BPFDoor utiliza filtros de socket para permitir comunicaciones sigilosas. Puede recibir comandos en cualquier puerto del sistema, ya que el programa eBPF que utiliza ve todo el tráfico entrante. Symbiote también aprovecha los filtros de socket, pero de una manera diferente. Symbiote intercepta la setsockoptllamada a la función y, cuando ve la creación de un filtro de socket, inyecta su propio código para filtrar el tráfico que quiere ocultar. Esto le permite evadir herramientas de análisis de paquetes como tcpdump, wiresark,.
 
 **Filtros de paquetes de Berkeley (BPF)**, ejemplo, llamadas tambien expresiones: 
 <img style="float:left" alt="3" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
@@ -29,18 +29,14 @@ Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/4.png">
 
 **cómo actúa el implante malicioso:**
-
 -Victim Linux Host (Host Linux Víctima): El atacante ha instalado un "BPF Implant".
-
 -Magic Packet (Paquete Mágico): El Attacker/Controller (Atacante/Controlador) envía un paquete especial diseñado para activar el malware.
-
 -BPF Filter (Magic Packet Pattern): El malware utiliza un filtro BPF que busca específicamente el patrón de ese "paquete mágico". Como este filtrado ocurre a un nivel muy bajo en el núcleo (Kernel), puede ver el paquete antes de que cualquier firewall local lo bloquee.
-
 -Activate Bind Shell or Reverse Shell: Una vez detectado el paquete, el implante activa una terminal de comandos (Shell) para que el atacante tome el control.
 
 En su núcleo, estos entornos dependen de protocolos especializados como SS7, Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una violación de datos convencional.
 
-El acceso persistente dentro del núcleo de una telecomunicación puede exponer identificadores de suscriptores, eventos de movilidad, intercambios de autenticación y metadatos de comunicación, permitiendo el seguimiento a gran escala de objetivos geopolíticos de alto valor.
+El acceso persistente dentro del núcleo de un operador telecomunicación puede exponer identificadores de suscriptores, eventos de movilidad, intercambios de autenticación y metadatos de comunicación, permitiendo el seguimiento a gran escala de objetivos geopolíticos de alto valor.
 
 Red Menshen ha atacado específicamente a proveedores de telecomunicaciones en Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
 
@@ -48,7 +44,7 @@ Red Menshen ha atacado específicamente a proveedores de telecomunicaciones en C
 
 En el centro de esta campaña se encuentra BPFdoor, una puerta trasera sigilosa para Linux diseñada para operar dentro del kernel del sistema operativo abusando de la funcionalidad Berkeley Packet Filter (BPF).
 
-A diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico" especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
+**Paquete maquico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
@@ -62,23 +58,19 @@ La variante también emplea un canal de control basado en ICMP, donde los servid
 
 **Suplantación a nivel de infraestructura**
 
-Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant de metal desnudo, específicamente suplantando a hpasmlited, un demonio perteneciente al Servicio de Gestión sin Agente de HPE, para mezclarse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
+Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant (software de HPÊ para monitorizar procesos), específicamente suplantando a **hpasmlited**, un proceso perteneciente al Servicio de Gestión sin Agente de HPE, para meterse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
 
-Otras muestras suplantan a componentes de Docker y containerd, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
+Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
-El acceso inicial apunta consistentemente a infraestructura perimetral: VPNs Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
+**El acceso inicial** apunta consistentemente a infraestructura perimetral: VPNs Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición.
-
-Se recomienda  ampliar la visibilidad de las operaciones a nivel del kernel, la actividad de filtros BPF sin procesar y el comportamiento anómalo en puertos altos en sistemas Linux, áreas donde la mayoría de las organizaciones carecen actualmente de una profundidad de monitoreo.
 
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
 Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
 
-Comunicación lateral con ICMP: Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
-
-Suplantación de procesos legítimos: Los binarios maliciosos se hacen pasar por procesos típicos en entornos de telecomunicaciones, como el demonio de gestión de servidores HPE ProLiant (hpasmlited) o por componentes de Docker/containerd, mezclándose con las cargas de trabajo de núcleos 4G/5G.
+Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
 
 **Impacto y recomendaciones:**
 El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
