@@ -27,13 +27,6 @@ Generar tráfico de comando y control (C2) visible.
 Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/4.png">
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
-<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
-
-
-
-
 En su núcleo, estos entornos dependen de protocolos especializados como SS7, Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una violación de datos convencional.
 
 El acceso persistente dentro del núcleo de una telecomunicación puede exponer identificadores de suscriptores, eventos de movilidad, intercambios de autenticación y metadatos de comunicación, permitiendo el seguimiento a gran escala de objetivos geopolíticos de alto valor.
@@ -48,9 +41,14 @@ A diferencia del malware convencional, BPFdoor no abre puertos de escucha ni gen
 
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
+
 Un sofisticado mecanismo de relleno de "regla mágica" asegura que una cadena marcadora ("9999") siempre caiga en un desplazamiento fijo de 26 o 40 bytes dentro de los datos de solicitud inspeccionados, permitiendo que el implante sobreviva a la reescritura de cabeceras del proxy, creando efectivamente un camuflaje dinámico en la capa 7.
 
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
+
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
+<img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
 Suplantación a nivel de infraestructura
 
