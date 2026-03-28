@@ -1,3 +1,5 @@
+<img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
+
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF)
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
@@ -87,6 +89,7 @@ https://www.youtube.com/watch?v=5kOQg-eCPu4
 https://www.youtube.com/shorts/BTQX9oBn3dw
 https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
 https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
+https://suzulabs.com/suzu-labs-blog/bpfdoor-in-telecom-networks-the-fcc-is-securing-the-edge-but-chinas-hackers-are-already-past-it
 
 
 
