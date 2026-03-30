@@ -7,4 +7,4 @@
 
 <img style="float:left" alt="APT41" src="https://github.com/hackingyseguridad/APT41/blob/main/apt41.png">
 
-http://www.hackingyseguridad.com/
+http://goo.gl/ID8XBX
