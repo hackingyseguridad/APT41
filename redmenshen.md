@@ -1,3 +1,32 @@
+Introduccion: 
+
+### 1. El Objetivo: Inteligencia de Telecomunicaciones
+a diferencia de los ciberataques comunes que buscan robo de datos financieros, Red Menshen busca **acceso a largo plazo** para la recolección de inteligencia geopolítica.
+**Protocolos Críticos:** Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores.
+**Impacto:** Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.
+
+### 2. El Malware: BPFdoor
+El corazón de la operación es **BPFdoor**, una puerta trasera (backdoor) para Linux extremadamente sigilosa que opera a nivel de **kernel**.
+
+**Abuso de BPF (Berkeley Packet Filter):** Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
+**El "Paquete Mágico":** El implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). Al detectarlo, el malware activa una terminal de comandos (*shell*) para el atacante.
+**Evasión de Firewall:** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
+
+### 3. Técnicas Avanzadas de Sigilo y Camuflaje
+El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
+**Ocultamiento en HTTPS:** Las versiones más nuevas esconden sus comandos dentro de tráfico HTTPS legítimo. Aprovechan puntos de terminación SSL (como balanceadores de carga) para activarse justo después de que el tráfico es descifrado en la red interna.
+**Regla Mágica (Offset Fixo):** Utilizan un marcador ("9999") en desplazamientos fijos de 26 o 40 bytes para asegurar que el comando sobreviva a la reescrita de cabeceras de los proxies.
+**Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
+
+### 4. Suplantación de Infraestructura
+Para evitar ser detectados por administradores de sistemas, el malware imita procesos legítimos:
+* En servidores **HPE ProLiant**, se hace pasar por el proceso `hpasmlited` (un servicio de gestión de hardware).
+* En entornos de nube, suplanta componentes de **Docker, containerd y Kubernetes** (AMF, SMF, UDM), apuntando específicamente a las funciones del núcleo de las redes 5G.
+
+### 5. Acceso inicial
+**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
+**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
+
 <img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
 
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF)
