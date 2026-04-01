@@ -62,6 +62,15 @@ La variante también emplea un canal de control basado en ICMP, donde los servid
 
 Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
 
+protocolo ICMP (Internet Control Message Protocol) generalmente utilizado para diagnósticos simples como ping para transportar datos maliciosos y comandos. El malware abre un "raw socket" que le permite ver todos los paquetes que llegan a la interfaz de red antes de que el firewall local del sistema operativo los procese. Puede responder a paquetes ICMP manipulados incluso si el firewall está configurado para bloquear todo el tráfico entrante, ya que el filtro BPF "secuestra" el paquete antes de que el kernel lo descarte
+
+Flujo de Ataque: Del L1 al Núcleo Aislado (L3)El ataque se divide en capas para alcanzar el HSS (Home Subscriber Server) en el núcleo aislado, un componente crítico en redes de telecomunicaciones.PasoAcciónDescripción Técnica1 & 2Acceso InicialEl atacante toma control del Nodo B (Servidor Interno) a través de un Proxy inverso (Nodo A). Se prepara un listener (nc -lvnp 9000) para recibir la shell.3 & 4Activación del TúnelEl controlador envía una señal al Nodo B. El implante intercepta esta señal y genera un ICMP Echo Request (Ping) hacia el Nodo C.5Propagación LateralEl Nodo C (también infectado) recibe el paquete ICMP. Al detectar la firma maliciosa en el payload, ejecuta una shell y la "devuelve" al Nodo B, permitiendo al atacante operar en la capa L3.
+
+El valor hexadecimal 0xFFFFFFFF actúa como un carácter de escape o terminación. Indica al implante que el comando ha llegado a su destino final y no debe seguir saltando a otros nodos. Esto evita bucles infinitos y reduce el "ruido" en la red, haciendo que el tráfico parezca una serie de pings normales y no un escaneo de red o una exfiltración masiva. ICMP  esta permitido incluso entre redes, para monitoreo de disponibilidad, considerándolo de bajo riesgo; "salta" de la zona desmilitarizada (DMZ) al núcleo de la red (Core) usando los mismos canales que usan las herramientas de red legítimas.
+
+tshark -i eth0 -Y "icmp.type == 8" -T fields -e data | grep "ffffffff"
+
+
 **Suplantación a nivel de infraestructura**
 
 Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant (software de HPÊ para monitorizar procesos), específicamente suplantando a **hpasmlited**, un proceso perteneciente al Servicio de Gestión sin Agente de HPE, para meterse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
