@@ -1,6 +1,4 @@
-Aquí tienes el contenido organizado y estructurado en formato Markdown (`.md`), manteniendo todo el texto proporcionado y siguiendo una estructura jerárquica de puntos e índice.
 
------
 
 # Red Menshen: Campaña de Espionaje en Redes de Telecomunicaciones (APT41)
 
