@@ -62,26 +62,11 @@ En el centro de esta campaña se encuentra BPFdoor, una puerta trasera sigilosa 
 **Paquete maquico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
 
-
-
 ### 3. Técnicas Avanzadas de Sigilo y Camuflaje
 El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
 **Ocultamiento en HTTPS:** Las versiones más nuevas esconden sus comandos dentro de tráfico HTTPS legítimo. Aprovechan puntos de terminación SSL (como balanceadores de carga) para activarse justo después de que el tráfico es descifrado en la red interna.
 **Regla Mágica (Offset Fixo):** Utilizan un marcador ("9999") en desplazamientos fijos de 26 o 40 bytes para asegurar que el comando sobreviva a la reescrita de cabeceras de los proxies.
 **Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
-
-### 4. Suplantación de Infraestructura
-Para evitar ser detectados por administradores de sistemas, el malware imita procesos legítimos:
-* En servidores **HPE ProLiant**, se hace pasar por el proceso `hpasmlited` (un servicio de gestión de hardware).
-* En entornos de nube, suplanta componentes de **Docker, containerd y Kubernetes** (AMF, SMF, UDM), apuntando específicamente a las funciones del núcleo de las redes 5G.
-
-### 5. Acceso inicial
-**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
-**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
-
-
-
-
 
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
@@ -106,24 +91,31 @@ ICMP  esta permitido incluso entre redes, para monitoreo de disponibilidad, cons
 
 tshark -i eth0 -Y "icmp.type == 8" -T fields -e data | grep "ffffffff"
 
-
 **Suplantación a nivel de infraestructura**
-
 Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant (software de HPÊ para monitorizar procesos), específicamente suplantando a **hpasmlited**, un proceso perteneciente al Servicio de Gestión sin Agente de HPE, para meterse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
 
 Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
 <img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
 
+### 4. Suplantación de Infraestructura
+Para evitar ser detectados por administradores de sistemas, el malware imita procesos legítimos:
+* En servidores **HPE ProLiant**, se hace pasar por el proceso `hpasmlited` (un servicio de gestión de hardware).
+* En entornos de nube, suplanta componentes de **Docker, containerd y Kubernetes** (AMF, SMF, UDM), apuntando específicamente a las funciones del núcleo de las redes 5G.
+
+### 5. Acceso inicial
+**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
+**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
+
+El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
+
 **El acceso inicial** apunta consistentemente a infraestructura perimetral: VPNs Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
+
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición.
 
-
 <img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
-**Impacto y recomendaciones:**
-El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores, flujos de señalización (SS7, Diameter, SCTP) y potencialmente rastrear la ubicación de dispositivos a nivel poblacional. Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
 Referencias:
 
