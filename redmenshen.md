@@ -91,6 +91,8 @@ ICMP  esta permitido incluso entre redes, para monitoreo de disponibilidad, cons
 
 tshark -i eth0 -Y "icmp.type == 8" -T fields -e data | grep "ffffffff"
 
+<img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
+
 **Suplantación a nivel de infraestructura**
 Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant (software de HPÊ para monitorizar procesos), específicamente suplantando a **hpasmlited**, un proceso perteneciente al Servicio de Gestión sin Agente de HPE, para meterse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
 
@@ -114,7 +116,6 @@ El acceso a estas redes permite a los atacantes espiar metadatos de suscriptores
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición.
 
-<img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
 
 Referencias:
