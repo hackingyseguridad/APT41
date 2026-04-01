@@ -14,11 +14,6 @@ estos entornos se basan en protocolos especializados como SS7 , Diameter y SCTP 
 ### 2. El Malware: BPFdoor
 El corazón de la operación es **BPFdoor**, una puerta trasera (backdoor) para Linux extremadamente sigilosa que opera a nivel de **kernel**.
 
-**Abuso de BPF (Berkeley Packet Filter):** Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
-**El "Paquete Mágico":** El implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). Al detectarlo, el malware activa una terminal de comandos (*shell*) para el atacante.
-**Evasión de Firewall:** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
-
-
 **BPFdoor:** Una puerta trasera a nivel de kernel, imitan procesos legítimos en servidores bare-metal HPE ProLiant, suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 Una investigación de varios meses realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado, llevada a cabo por el actor de amenazas vinculado a China, Red Menshen. Este grupo ha incrustado algunas de las "células durmientes" digitales más encubiertas jamás documentadas dentro de la infraestructura mundial de telecomunicaciones.
@@ -35,11 +30,15 @@ eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta e
 **Filtros de paquetes de Berkeley (BPF)**, ejemplo, llamadas tambien expresiones: 
 <img style="float:left" alt="3" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
 
-**Abuso de Berkeley Packet Filter (BPF)** BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump.
+**Abuso de BPF (Berkeley Packet Filter):** BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump.
 BPFdoor abusa de esta funcionalidad al inyectar un filtro BPF personalizado directamente en el kernel. Este filtro inspecciona silenciosamente todo el tráfico entrante sin necesidad de:
 Abrir puertos de escucha (no aparece en netstat o ss).
 Generar tráfico de comando y control (C2) visible.
 Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
+
+Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
+**El "Paquete Mágico":** El implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). Al detectarlo, el malware activa una terminal de comandos (*shell*) para el atacante.
+**Evasión de Firewall:** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/4.png">
 
