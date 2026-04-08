@@ -48,6 +48,7 @@
       * **Ventajas de sigilo:** No abre puertos de escucha (invisible para `netstat` o `ss`), no genera tráfico C2 visible y no deja procesos fácilmente detectables en el espacio de usuario.
   * **El "Paquete Mágico":** El implante permanece dormido hasta que recibe un paquete con una secuencia de bytes predefinida. Al detectarlo, activa una *bind shell* o *reverse shell* para el control total.
   * **Evasión de Firewall:** El filtro BPF "secuestra" el paquete antes de que el kernel o el firewall local lo descarte, permitiendo respuesta incluso en sistemas con tráfico entrante bloqueado.
+https://github.com/hackingyseguridad/APT41/blob/main/ebpf.txt
 
 -----
 
