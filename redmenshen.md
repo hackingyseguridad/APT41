@@ -93,14 +93,13 @@ tshark -i eth0 -Y "icmp.type == 8" -T fields -e data | grep "ffffffff"
 
 <img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
 
-**Suplantación a nivel de infraestructura**
+### 4. Suplantación de Infraestructura
 Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLiant (software de HPÊ para monitorizar procesos), específicamente suplantando a **hpasmlited**, un proceso perteneciente al Servicio de Gestión sin Agente de HPE, para meterse en entornos de hardware de telecomunicaciones que ejecutan cargas de trabajo de núcleo 4G/5G.
 
 Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
 <img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
 
-### 4. Suplantación de Infraestructura
 Para evitar ser detectados por administradores de sistemas, el malware imita procesos legítimos:
 * En servidores **HPE ProLiant**, se hace pasar por el proceso `hpasmlited` (un servicio de gestión de hardware).
 * En entornos de nube, suplanta componentes de **Docker, containerd y Kubernetes** (AMF, SMF, UDM), apuntando específicamente a las funciones del núcleo de las redes 5G.
