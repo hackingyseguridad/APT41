@@ -53,7 +53,7 @@ Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abr
 
 **BPFdoor: Una puerta trampilla a nivel del kernel**
 
-En el centro de esta campaña se encuentra BPFdoor, una puerta trasera sigilosa para Linux diseñada para operar dentro del kernel del sistema operativo abusando de la funcionalidad Berkeley Packet Filter (BPF).  BPFdoor usa principalmente BPF clásico (más simple pero efectivo para persistencia), mientras que variantes más modernas como Symbiote usan eBPF para mayor complejidad.
+BPFdoor usa principalmente BPF, mientras que variantes del malware más modernas como Symbiote (Fortinet) usan eBPF para mayor complejidad.
 
 **Paquete maquico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
