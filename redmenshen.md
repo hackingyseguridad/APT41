@@ -127,6 +127,7 @@ https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/
 https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
 https://suzulabs.com/suzu-labs-blog/bpfdoor-in-telecom-networks-the-fcc-is-securing-the-edge-but-chinas-hackers-are-already-past-it
 https://www.cbtnuggets.com/blog/certifications/security/fortinet-identifies-new-symbiote-bpfdoor-variants
+https://blog.g5cybersecurity.com/bpfdoor-detection-removal/
 
 
 
