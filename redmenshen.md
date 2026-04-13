@@ -147,7 +147,6 @@ Detectando variantes BPFdoor:
 
 https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
 https://suzulabs.com/suzu-labs-blog/bpfdoor-in-telecom-networks-the-fcc-is-securing-the-edge-but-chinas-hackers-are-already-past-it
-
 https://blog.g5cybersecurity.com/bpfdoor-detection-removal/
 
 
