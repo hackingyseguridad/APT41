@@ -1,7 +1,7 @@
 <img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
 
 ### 1. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
-Red Menshen busca **acceso a largo plazo** para la recolección de inteligencia geopolítica.
+Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
 **Protocolos Críticos:** Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores. lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional..
 **Impacto:** Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  
 
@@ -10,9 +10,9 @@ Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigil
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
 ### 2. El Malware: BPFdoor
-El corazón de la operación es **BPFdoor**, una puerta trasera (backdoor) para Linux extremadamente sigilosa que opera a nivel de **kernel**.
+**BPFdoor**, una puerta trasera (backdoor) para Linux extremadamente sigilosa que opera a nivel de **kernel**.
 
-**BPFdoor:** Una puerta trasera a nivel de kernel, imitan procesos legítimos en servidores bare-metal HPE ProLiant, https://www.hpe.com/es/es/hpe-proliant-compute.html/ suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
+**BPFdoor:** Una puerta trasera a nivel de kernel, imita procesos legítimos en servidores bare-metal HPE ProLiant, https://www.hpe.com/es/es/hpe-proliant-compute.html/ suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 Una investigación de varios meses realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado, llevada a cabo por el actor de amenazas vinculado a China, Red Menshen. Este grupo ha incrustado algunas de las "células durmientes" digitales más encubiertas jamás documentadas dentro de la infraestructura mundial de telecomunicaciones.
 https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
