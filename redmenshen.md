@@ -123,7 +123,7 @@ Rapid7 ha publicado un script de detección gratuito y recomienda a los defensor
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
 
-Recomendaciones:
+** Recomendaciones:**
 
 Ampliar la visibilidad hacia operaciones a nivel de kernel.
 
@@ -131,7 +131,7 @@ Monitorear tráfico SCTP y anomalías en paquetes ICMP (pings con payloads inusu
 
 Utilizar scripts de detección especializados para BPFdoor.
 
-Detección: Cómo Identificarlo
+** Detección: Cómo Identificarlo**
 Dado que estas amenazas operan a nivel de kernel, la defensa debe ser igualmente rigurosa. Aquí tienes un plan de acción basado en las investigaciones:
 
 Monitoreo de Comportamiento, no de Paquetes: Depende de herramientas de Detección y Respuesta de Endpoint (EDR) que analicen el comportamiento del sistema, como Falco. Falco puede detectar eventos sospechosos, como el uso del syscall setsockopt con la opción SO_ATTACH_FILTER, que es una forma común de cargar estos filtros .
@@ -144,7 +144,7 @@ Monitoreo de Modificaciones del Sistema: Utiliza sistemas de integridad de archi
 
 Mantén el Kernel Actualizado: Las nuevas versiones del kernel incluyen mejoras en el verificador (verifier) de eBPF y parches de seguridad que dificultan la explotación de estas técnicas.
 
-Medidas Defensivas:
+**Medidas Defensivas:**
 Firmado de Módulos: Impedir que el kernel cargue módulos que no tengan una firma digital legítima.
 Kernel Lockdown: Activar el modo lockdown para restringir el acceso a /dev/mem y otras interfaces críticas incluso para el usuario root.
 Auditoría constante: Usar herramientas como auditd para monitorear cambios inesperados en los parámetros del sistema.
@@ -158,10 +158,6 @@ Restricción de Capacidades: Limita el uso de eBPF. Asegúrate de que el paráme
 Monitoreo de Modificaciones del Sistema: Utiliza sistemas de integridad de archivos (FIM) como AIDE o Tripwire para detectar cambios no autorizados en archivos críticos del sistema, ya que algunos rootkits modifican /etc/ld.so.preload para inyectarse .
 
 Mantén el Kernel Actualizado: Las nuevas versiones del kernel incluyen mejoras en el verificador (verifier) de eBPF y parches de seguridad que dificultan la explotación de estas técnicas.
-
-
-
-
 
 
 Referencias:
