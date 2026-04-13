@@ -58,23 +58,24 @@ BPFdoor usa principalmente BPF, mientras que variantes del malware más modernas
 **Paquete magico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
 
-### 3. Técnicas Avanzadas de Sigilo y Camuflaje
+### 3. Técnicas avanzadas de sigilo y camuflaje
+
 El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
+
 **Ocultamiento en HTTPS:** Las versiones más nuevas esconden sus comandos dentro de tráfico HTTPS legítimo. Aprovechan puntos de terminación SSL (como balanceadores de carga) para activarse justo después de que el tráfico es descifrado en la red interna.
+
 **Regla Mágica (Offset Fixo):** Utilizan un marcador ("9999") en desplazamientos fijos de 26 o 40 bytes para asegurar que el comando sobreviva a la reescrita de cabeceras de los proxies.
+
 **Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
 
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
-Un sofisticado mecanismo de relleno de **"regla mágica"** asegura que una cadena marcadora ("9999") siempre caiga en un desplazamiento fijo de 26 o 40 bytes dentro de los datos de solicitud inspeccionados, permitiendo que el implante sobreviva a la reescritura de cabeceras del proxy, creando efectivamente un camuflaje dinámico en la capa 7.
-
-Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marcador como "9999" en un offset fijo de 26 o 40 bytes) para que el comando siga siendo reconocible incluso después de que el tráfico pase por proxies que reescriben las cabeceras HTTP.
-
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 <img style="float:left" alt="5" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
+
 Túnel ICMP para acceder a un núcleo aislado de 3 capas:
 
 El atacante activa un shell en el Nodo B (servidor interno, capa 2) usando un proxy inverso.
