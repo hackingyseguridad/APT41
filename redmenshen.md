@@ -124,22 +124,27 @@ Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notif
 
 Referencias:
 
-Articulo Rapid7
+Articulo Rapid7:
+
 https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 https://github.com/rapid7/Rapid7-Labs/tree/main/BPFDoor
+https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
 
-Analisis BPFdoor
+Analisis BPFdoor:
+
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://hackers-arise.com/compromising-telecom-systems-deploying-and-detecting-the-bpfdoor-backdoor/
+https://www.youtube.com/watch?v=5kOQg-eCPu4
+https://www.youtube.com/shorts/BTQX9oBn3dw
 
 Variante Fortinet:
+
 https://www.cbtnuggets.com/blog/certifications/security/fortinet-identifies-new-symbiote-bpfdoor-variants
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
 
 
-https://www.youtube.com/watch?v=5kOQg-eCPu4
-https://www.youtube.com/shorts/BTQX9oBn3dw
-https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
+Detectando variantes BPFdoor:
+
 https://www.trendmicro.com/en_gb/research/23/g/detecting-bpfdoor-backdoor-variants-abusing-bpf-filters.html
 https://suzulabs.com/suzu-labs-blog/bpfdoor-in-telecom-networks-the-fcc-is-securing-the-edge-but-chinas-hackers-are-already-past-it
 
