@@ -49,16 +49,13 @@ Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abr
 
 -Activate Bind Shell or Reverse Shell: Una vez detectado el paquete, el implante activa una terminal de comandos (Shell) para que el atacante tome el control.
 
-
-
 **BPFdoor: Una puerta trampilla a nivel del kernel**
 
 BPFdoor usa principalmente BPF, mientras que variantes del malware más modernas como Symbiote (Fortinet) usan eBPF para mayor complejidad.
 
 **Paquete magico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
-
-### 3. Técnicas avanzadas de sigilo y camuflaje
+### 3. otras técnicas avanzadas de sigilo y camuflaje
 
 El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
 
