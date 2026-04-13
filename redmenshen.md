@@ -24,8 +24,7 @@ https://github.com/hackingyseguridad/APT41/blob/main/ebpf.md
 **Filtros de paquetes de Berkeley (BPF)**, ejemplo, llamadas tambien expresiones: 
 <img style="float:left" alt="3" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
 
-**Abuso de BPF (Berkeley Packet Filter):** BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump.
-BPFdoor abusa de esta funcionalidad al inyectar un filtro BPF personalizado directamente en el kernel. Este filtro inspecciona silenciosamente todo el tráfico entrante sin necesidad de:
+**Abuso de BPF:** BPF es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump, Wireshark, Tshark,...;  **BPFdoor** abusa de esta funcionalidad al inyectar un filtro BPF personalizado directamente en el kernel. Este filtro inspecciona silenciosamente todo el tráfico entrante sin necesidad de:
 Abrir puertos de escucha (no aparece en netstat o ss).
 Generar tráfico de comando y control (C2) visible.
 Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
