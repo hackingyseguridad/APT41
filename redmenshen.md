@@ -3,7 +3,7 @@
 ### 1. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
 Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
 **Protocolos Críticos:** Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores. lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional..
-**Impacto:** Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  
+**Impacto:** Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades de suscriptores, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
 
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF)
 
@@ -15,8 +15,6 @@ Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigil
 
 Una investigación realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por el estado Chino, llevada a cabo por **Red Menshen**.. https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 Publicados el 26 de marzo de 2026, los hallazgos revelan persistencia y posicionamiento a largo plazo dentro de las redes troncales que sostienen las comunicaciones nacionales e internacionales.
-
-Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades de suscriptores, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
 
 <img style="float:left" alt="2" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
 
