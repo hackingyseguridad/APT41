@@ -124,9 +124,13 @@ Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notif
 
 Referencias:
 
+Articulo Rapid7
 https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 https://github.com/rapid7/Rapid7-Labs/tree/main/BPFDoor
+
+Analisis BPFdoor
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
+
 https://hackers-arise.com/compromising-telecom-systems-deploying-and-detecting-the-bpfdoor-backdoor/
 https://www.fortinet.com/blog/threat-research/new-ebpf-filters-for-symbiote-and-bpfdoor-malware
 https://www.youtube.com/watch?v=5kOQg-eCPu4
