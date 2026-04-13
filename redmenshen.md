@@ -122,6 +122,9 @@ Rapid7 ha publicado un script de detección gratuito y recomienda a los defensor
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
+
+
+
 Referencias:
 
 Articulo Rapid7:
