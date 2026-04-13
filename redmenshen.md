@@ -75,6 +75,20 @@ Camuflaje en capa 7: Utiliza un ingenioso mecanismo de "regla mágica" (un marca
 La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 <img style="float:left" alt="5" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
+Túnel ICMP para acceder a un núcleo aislado de 3 capas:
+
+El atacante activa un shell en el Nodo B (servidor interno, capa 2) usando un proxy inverso.
+
+El Nodo B prepara un listener Netcat en el puerto 9000.
+
+Un controlador ordena al Nodo B que use el Nodo C (núcleo aislado, capa 3) como siguiente salto.
+
+El Nodo B, mediante un implante BPFdoor, redirige la orden por ICMP al Nodo C.
+
+El Nodo C devuelve un shell al Nodo B, dando acceso al atacante.
+
+Resumen: Se salta el aislamiento del núcleo (Nodo C) usando ICMP como transporte, con el Nodo B como puente.
+
 
 Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
 
