@@ -9,8 +9,7 @@ Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigil
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
-### 2. El Malware: BPFdoor
-**BPFdoor**, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
+### 2. El Malware: BPFdoor, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
 
 **BPFdoor:** Una puerta trasera a nivel de kernel, imita procesos legítimos en servidores bare-metal HPE ProLiant, https://www.hpe.com/es/es/hpe-proliant-compute.html/ suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
