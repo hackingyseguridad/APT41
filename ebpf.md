@@ -30,31 +30,3 @@ Ocultación de Procesos y Archivos: Rootkits como LinkPro y Singularity utilizan
 
 Auto-ocultamiento de los Programas eBPF: Lo más sofisticado es que pueden ocultarse a sí mismos de herramientas de diagnóstico. Por ejemplo, LinkPro hookea la llamada al sistema sys_bpf. Esto significa que si ejecutas bpftool prog list (la herramienta estándar para ver programas eBPF), el rootkit intercepta la solicitud y elimina su propio programa de la lista .
 
-Detección: Cómo Identificarlo
-Dado que estas amenazas operan a nivel de kernel, la defensa debe ser igualmente rigurosa. Aquí tienes un plan de acción basado en las investigaciones:
-
-Monitoreo de Comportamiento, no de Paquetes: Depende de herramientas de Detección y Respuesta de Endpoint (EDR) que analicen el comportamiento del sistema, como Falco. Falco puede detectar eventos sospechosos, como el uso del syscall setsockopt con la opción SO_ATTACH_FILTER, que es una forma común de cargar estos filtros .
-
-Auditoría de Programas eBPF: Revisa periódicamente los programas eBPF cargados con bpftool prog list y compáralos con una línea base de tu sistema. Presta especial atención a programas con nombres aleatorios o inesperados .
-
-Restricción de Capacidades: Limita el uso de eBPF. Asegúrate de que el parámetro del kernel kernel.bpf_enable_unprivileged esté desactivado (=0). Esto evita que usuarios sin privilegios carguen programas eBPF . Para procesos legítimos, usa capacidades de Linux de forma restrictiva.
-
-Monitoreo de Modificaciones del Sistema: Utiliza sistemas de integridad de archivos (FIM) como AIDE o Tripwire para detectar cambios no autorizados en archivos críticos del sistema, ya que algunos rootkits modifican /etc/ld.so.preload para inyectarse .
-
-Mantén el Kernel Actualizado: Las nuevas versiones del kernel incluyen mejoras en el verificador (verifier) de eBPF y parches de seguridad que dificultan la explotación de estas técnicas.
-
-Medidas Defensivas:
-Firmado de Módulos: Impedir que el kernel cargue módulos que no tengan una firma digital legítima.
-Kernel Lockdown: Activar el modo lockdown para restringir el acceso a /dev/mem y otras interfaces críticas incluso para el usuario root.
-Auditoría constante: Usar herramientas como auditd para monitorear cambios inesperados en los parámetros del sistema.
-
-Monitoreo de Comportamiento, no de Paquetes: Depende de herramientas de Detección y Respuesta de Endpoint (EDR) que analicen el comportamiento del sistema, como Falco. Falco puede detectar eventos sospechosos, como el uso del syscall setsockopt con la opción SO_ATTACH_FILTER, que es una forma común de cargar estos filtros .
-
-Auditoría de Programas eBPF: Revisa periódicamente los programas eBPF cargados con bpftool prog list y compáralos con una línea base de tu sistema. Presta especial atención a programas con nombres aleatorios o inesperados .
-
-Restricción de Capacidades: Limita el uso de eBPF. Asegúrate de que el parámetro del kernel kernel.bpf_enable_unprivileged esté desactivado (=0). Esto evita que usuarios sin privilegios carguen programas eBPF . Para procesos legítimos, usa capacidades de Linux de forma restrictiva.
-
-Monitoreo de Modificaciones del Sistema: Utiliza sistemas de integridad de archivos (FIM) como AIDE o Tripwire para detectar cambios no autorizados en archivos críticos del sistema, ya que algunos rootkits modifican /etc/ld.so.preload para inyectarse .
-
-Mantén el Kernel Actualizado: Las nuevas versiones del kernel incluyen mejoras en el verificador (verifier) de eBPF y parches de seguridad que dificultan la explotación de estas técnicas.
-
