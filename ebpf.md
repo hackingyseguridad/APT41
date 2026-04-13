@@ -23,7 +23,7 @@ Cómo funciona: Utiliza eBPF en el modo XDP (eXpress Data Path). El programa XDP
 
 La Evasión: En este punto, tcpdump y Wireshark (que dependen de la pila de red del kernel) ni siquiera han visto el paquete. El rootkit XDP puede analizar, redirigir o dropear el paquete sin dejar absolutamente ningún rastro para las herramientas de monitoreo convencionales. Es la máxima expresión de invisibilidad .
 
-👹 Más Allá de la Red: Ocultando su Propia Existencia
+Más Allá de la Red: Ocultando su Propia Existencia
 La capacidad de evasión de estos malware va más allá de ocultar el tráfico. También se ocultan a sí mismos para que no puedas encontrar el origen del problema:
 
 Ocultación de Procesos y Archivos: Rootkits como LinkPro y Singularity utilizan hooks eBPF (en sistemas de archivos como getdents) para interceptar llamadas al sistema. Cuando ejecutas ps o ls para buscar el malware, el rootkit filtra los resultados y elimina su propio nombre y PID de la lista, haciéndose invisible .
