@@ -7,6 +7,10 @@ Red Menshen busca **acceso persistente a largo plazo** para la recolección de i
 
 Hackers del grupo ATP Chino Red Menshen. instalan puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF)
 
+El acceso persistente dentro del núcleo de un operador telecomunicación puede exponer identificadores de suscriptores, eventos de movilidad, intercambios de autenticación y metadatos de comunicación, permitiendo el seguimiento a gran escala de objetivos geopolíticos de alto valor.
+
+Red Menshen ha atacado específicamente a proveedores de telecomunicaciones en Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
+
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
 ### 2. El Malware: BPFdoor, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
@@ -45,11 +49,7 @@ Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abr
 
 -Activate Bind Shell or Reverse Shell: Una vez detectado el paquete, el implante activa una terminal de comandos (Shell) para que el atacante tome el control.
 
-En su núcleo, estos entornos dependen de protocolos especializados como SS7, Diameter y SCTP para gestionar la identidad, la movilidad y la conectividad global de los suscriptores, lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una violación de datos convencional.
 
-El acceso persistente dentro del núcleo de un operador telecomunicación puede exponer identificadores de suscriptores, eventos de movilidad, intercambios de autenticación y metadatos de comunicación, permitiendo el seguimiento a gran escala de objetivos geopolíticos de alto valor.
-
-Red Menshen ha atacado específicamente a proveedores de telecomunicaciones en Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
 
 **BPFdoor: Una puerta trampilla a nivel del kernel**
 
