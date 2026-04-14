@@ -127,6 +127,26 @@ Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLian
 
 Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
+el malware suele estar en estas carperas y nombres de fichero:
+
+/sbin/udevd
+
+/sbin/agetty
+
+/sbin/auditd
+
+/usr/lib/systemd/systemd-journald
+
+en memoria:
+
+/dev/shm/kdmtmpout
+
+/dev/shm/ps_init
+
+/var/tmp/
+
+/tmp/
+
 <img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
 
 Para evitar ser detectados por administradores de sistemas, el malware imita procesos legítimos:
@@ -144,7 +164,7 @@ Rapid7 ha publicado un script de detección gratuito y recomienda a los defensor
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
 
-** Recomendaciones:**
+**Recomendaciones:**
 
 Ampliar la visibilidad hacia operaciones a nivel de kernel.
 
