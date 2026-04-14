@@ -201,7 +201,8 @@ Monitoreo de Modificaciones del Sistema: Utiliza sistemas de integridad de archi
 Mantén el Kernel Actualizado: Las nuevas versiones del kernel incluyen mejoras en el verificador (verifier) de eBPF y parches de seguridad que dificultan la explotación de estas técnicas.
 
 
-Referencias:
+
+**Referencias:**
 
 Articulo Rapid7:
 
