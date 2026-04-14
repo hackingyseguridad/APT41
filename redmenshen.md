@@ -1,6 +1,6 @@
 <img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
 
-### 1. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
+### 0. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
 Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
 Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores. lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional..  Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
 
@@ -9,6 +9,16 @@ Hackers del grupo ATP Chino Red Menshen. instalan "implantes" binarios con puert
 Red Menshen ha atacado a proveedores de telecomunicaciones en **Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio**, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
+
+### 1. Acceso inicial
+**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
+**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
+
+Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
+
+**El acceso inicial** apunta a infraestructura perimetral: VPN s Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
+
+Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
 ### 2. El Malware: BPFdoor, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
 
@@ -141,18 +151,9 @@ Para evitar ser detectados por administradores de sistemas, el malware imita pro
 * En servidores **HPE ProLiant**, se hace pasar por el proceso `hpasmlited` (un servicio de gestión de hardware).
 * En entornos de nube, suplanta componentes de **Docker, containerd y Kubernetes** (AMF, SMF, UDM), apuntando específicamente a las funciones del núcleo de las redes 5G.
 
-### 5. Acceso inicial
-**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
-**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
-
-Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
-
-**El acceso inicial** apunta a infraestructura perimetral: VPN s Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
-
-Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
 
-**Recomendaciones:**
+### 5.- Recomendaciones:
 
 - Ampliar la visibilidad hacia operaciones a nivel de kernel.
 
