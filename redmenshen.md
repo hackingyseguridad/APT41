@@ -29,9 +29,9 @@ publicados el 26 de marzo de 2026, los hallazgos revelan persistencia y posicion
 - Generar tráfico de comando y control (C2) visible.
 - Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
 
-Utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
-**El "Paquete Mágico":** El implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). Al detectarlo, el malware activa una terminal de comandos (*shell*) para el atacante.
-**Evasión de Firewall:** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
+utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
+**El activador o "Paquete Mágico";** el implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). al detectarlo, el malware activa una terminal de comandos (*Shell*) para el atacante.
+**Evasión de firewall;** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/4.png">
 
