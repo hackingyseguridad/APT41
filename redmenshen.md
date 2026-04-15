@@ -132,13 +132,13 @@ El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
 - /sbin/udevd  - proceso que gestiona los eventos del dispositivo en el espacio de usuario
 
-- /sbin/agetty
+- /sbin/agetty  - programa que abre un puerto de terminal tty1 o ttyS0, pide usuario y ejecuta el programa /bin/login para autenticar 
 
-- /sbin/auditd
+- /sbin/auditd  - mensajes de auditoría que genera el kernel y guardarlos en el disco (normalmente en /var/log/audit/audit.log
 
-- /usr/lib/systemd/systemd-journald
+- /usr/lib/systemd/systemd-journald  -
 
-***En memoria:***
+**En memoria:**
 
 - /dev/shm/kdmtmpout
 
@@ -146,9 +146,9 @@ El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
 **Temporales***
 
-- /var/tmp/  directorio para archivos remporales, se elimian al reiniazalizar el sistema operativo
+- /var/tmp/  - directorio para archivos remporales, se elimian al reiniazalizar el sistema operativo
 
-- /tmp/ carpeta para archivos Temporales, se borra al reinializar el sistema operativo
+- /tmp/  - carpeta para archivos Temporales, se borra al reinializar el sistema operativo
 
 <img style="float:left" alt="6" src="https://github.com/hackingyseguridad/APT41/blob/main/6.png">
 
