@@ -136,7 +136,7 @@ El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
 - /sbin/auditd  - mensajes de auditoría que genera el kernel y guardarlos en el disco (normalmente en /var/log/audit/audit.log
 
-- /usr/lib/systemd/systemd-journald  - registro de eventos
+- /usr/lib/systemd/systemd-journald  - registro de eventos que se pueden ver con el comando journaldctl
 
 **En memoria:**
 
@@ -213,6 +213,7 @@ Nuevo informe técnico de Rapid7, del 14 de Abril, con + 7 variantes de BPFDoor,
 
 Analisis BPFdoor:
 
+Codigo fuente malware BPFdoor filtrado en 2022 https://github.com/gwillgues/BPFDoor/ 
 https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-company-328171880a98
 https://hackers-arise.com/compromising-telecom-systems-deploying-and-detecting-the-bpfdoor-backdoor/
 https://www.youtube.com/watch?v=5kOQg-eCPu4
