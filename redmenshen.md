@@ -170,7 +170,7 @@ Para evitar ser detectados por administradores de sistemas, el malware imita pro
 
 
 - Monitoreo de Comportamiento, no de Paquetes: Depende de herramientas de Detección y Respuesta de Endpoint (EDR) que analicen el comportamiento del sistema, como Falco. Falco puede detectar eventos sospechosos, como el uso del syscall setsockopt con la opción SO_ATTACH_FILTER, que es una forma común de cargar estos filtros .
-Analisis e ingeniería inversa binaria con inteligencia artificial, que es una poderosa herramienta para inspeccionar el software a nivel de código máquina.
+- Analisis e ingeniería inversa binaria con inteligencia artificial, que es una poderosa herramienta para inspeccionar el software a nivel de código máquina.
 
 - Auditoría de Programas eBPF: Revisa periódicamente los programas eBPF cargados con bpftool prog list y compáralos con una línea base de tu sistema. Presta especial atención a programas con nombres aleatorios o inesperados .
 
