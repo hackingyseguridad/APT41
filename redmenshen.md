@@ -130,6 +130,8 @@ Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a f
 
 El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
+- /etc/init.d/ - programa que se ejecute en el inicio, con el arranque del sistema operativo
+
 - /sbin/udevd  - proceso que gestiona los eventos del dispositivo en el espacio de usuario
 
 - /sbin/agetty  - programa que abre un puerto de terminal tty1 o ttyS0, pide usuario y ejecuta el programa /bin/login para autenticar 
@@ -140,10 +142,10 @@ El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
 **En memoria:**
 
-- /dev/shm/kdmtmpout
+- /dev/shm/kdmtmpout  - archivos temporales en memoria RAM creados por algún proceso en ejecución
 
-- /dev/shm/ps_init
-
+- /dev/shm/ps_init  - 
+ 
 **Temporales***
 
 - /var/tmp/  - directorio para archivos remporales, se elimian al reiniazalizar el sistema operativo
