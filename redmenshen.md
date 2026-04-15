@@ -128,9 +128,9 @@ Algunas muestras de BPFdoor imitan procesos legítimos en servidores HPE ProLian
 
 Otras muestras suplantan a componentes de **Docker y containerd**, apuntando a funciones de núcleo 5G alojadas en Kubernetes como AMF, SMF y UDM.
 
-El malware suele estar en estas carperas y nombres de fichero:
+El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
-- /sbin/udevd
+- /sbin/udevd  - proceso que gestiona los eventos del dispositivo en el espacio de usuario
 
 - /sbin/agetty
 
