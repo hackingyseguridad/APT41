@@ -202,14 +202,13 @@ Auditoría constante: Usar herramientas como auditd para monitorear cambios ines
 
 **Referencias:**
 
-Articulo Rapid7:
+- Articulo Rapid7, del 26 de Marzo de 2026:
 
 https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/ 
 https://github.com/rapid7/Rapid7-Labs/tree/main/BPFDoor
 https://cybersecuritynews.com/bpfdoor-backdoors-telecom-networks/  
 
-Segundo Articulo RApid7:
-Nuevo informe técnico de Rapid7, del 14 de Abril, con + 7 variantes de BPFDoor, puertas traseras  https://www.rapid7.com/blog/post/tr-new-whitepaper-stealthy-bpfdoor-variants/
+- Articulo RApid7, segundo informe técnico, del 14 de Abril, con + 7 variantes de BPFDoor, puertas traseras  https://www.rapid7.com/blog/post/tr-new-whitepaper-stealthy-bpfdoor-variants/
 - httpShell:  utiliza filtros a nivel de kernel para validar tráfico IPv4 e IPv6. tunelización HTTP para extraer comandos ocultos y presenta un nuevo campo "Hidden IP" para enrutamiento dinámico.
 - icmpShell: el túnel PTY dinámico, para entornos muy restringidos, icmpShell tuneliza sesiones interactivas enteramente sobre ICMP. Recibe el activador o paquete mágico y se crea el script icmpshell.py.  La sesión ICMP utiliza un segundo filtro BPF de 13 instrucciones, con el ID fijo del PID de la shell inversa. El backdoor se cierra automáticamente tras 12 segundos de inactividad.
 
