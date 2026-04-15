@@ -119,6 +119,11 @@ Flujo de Ataque: Del L1 al Núcleo Aislado (L3)El ataque se divide en capas para
 El valor hexadecimal 0xFFFFFFFF actúa como un carácter de escape o terminación. Indica al implante que el comando ha llegado a su destino final y no debe seguir saltando a otros nodos. Esto evita bucles infinitos y reduce el "ruido" en la red, haciendo que el tráfico parezca una serie de pings normales y no un escaneo de red o una exfiltración masiva. 0xFFFFFFFF. Sería bueno aclarar que esto se inserta en el Payload (datos) del paquete ICMP Echo Request, no en la cabecera estándar, lo que lo hace pasar desapercibido para firewalls que solo miran cabeceras.
 ICMP  esta permitido incluso entre redes, para monitoreo de disponibilidad, considerándolo de bajo riesgo; "salta" de la zona desmilitarizada (DMZ) al núcleo de la red (Core) usando los mismos canales que usan las herramientas de red legítimas.
 
+El tunel se hace por encapsulación ICMP Echo Reply, cuando hay FW pero permiten ping
+TCP ( reverse Shell), tunel DNS por encapsulación DNS, o descarga un binario adicional para activar FTP o SCP, para exfiltrar archivos
+La exfiltración no siempre es por ICMP. ICMP , lo más común es que use una Shell Inversa sobre TCP (disfrazada de tráfico web) más rápida y estable para mover datos que el envío de miles de pings individuales
+para las Shell hace uso de agetty o Shells Interactivas ( kworker, syslogd)
+
 $tshark -i eth0 -Y "icmp.type == 8" -T fields -e data | grep "ffffffff"
 
 <img style="float:left" alt="7" src="https://github.com/hackingyseguridad/APT41/blob/main/7.png">
