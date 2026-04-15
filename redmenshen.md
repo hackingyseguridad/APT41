@@ -1,8 +1,11 @@
-<img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
+
+<img style="float:left" alt="00" src="https://github.com/hackingyseguridad/APT41/blob/main/00.png">
 
 ### 0. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
 Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
 Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores. lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional..  Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
+
+<img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
 
 Hackers del grupo ATP Chino Red Menshen. instalan "implantes" binarios con puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF) dentro del núcleo de un operador telecomunicación.
 
