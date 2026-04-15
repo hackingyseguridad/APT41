@@ -66,9 +66,9 @@ La capacidad de evasión de estos malware va más allá de ocultar el tráfico. 
 
 -Victim Linux Host (Host Linux Víctima): El atacante ha instalado un "BPF Implant".
 
--Magic Packet (Paquete Mágico): El Attacker/Controller (Atacante/Controlador) envía un paquete especial diseñado para activar el malware.
+-Magic Packet (Paquete Mágico): El Attacker/Controller (Atacante/Controlador) envía un paquete especial diseñado para activar el malware "durmiente".
 
--BPF Filter (Magic Packet Pattern): El malware utiliza un filtro BPF que busca específicamente el patrón de ese "paquete mágico". Como este filtrado ocurre a un nivel muy bajo en el núcleo (Kernel), puede ver el paquete antes de que cualquier firewall local lo bloquee.
+-BPF Filter (Magic Packet Pattern):El malware instala un filtro en el kernel (usando el lenguaje BPF) que dice: "Ignora todo, a menos que veas un paquete ICMP que contenga este valor específico en el campo de datos"; como este filtrado es a un nivel muy bajo en el núcleo (Kernel), puede ver el paquete antes de que cualquier firewall local lo bloquee.
 
 -Activate Bind Shell or Reverse Shell: Una vez detectado el paquete, el implante activa una terminal de comandos (Shell) para que el atacante tome el control.
 
