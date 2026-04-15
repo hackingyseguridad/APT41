@@ -136,7 +136,7 @@ El malware suele estar en estas carperas y nombres de fichero, p.ej.:
 
 - /sbin/auditd  - mensajes de auditoría que genera el kernel y guardarlos en el disco (normalmente en /var/log/audit/audit.log
 
-- /usr/lib/systemd/systemd-journald  -
+- /usr/lib/systemd/systemd-journald  - registro de eventos
 
 **En memoria:**
 
