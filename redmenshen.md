@@ -225,6 +225,7 @@ https://hackers-arise.com/compromising-telecom-systems-deploying-and-detecting-t
 https://www.youtube.com/watch?v=5kOQg-eCPu4
 https://www.youtube.com/shorts/BTQX9oBn3dw
 https://www.bleepingcomputer.com/news/security/bpfdoor-stealthy-linux-malware-bypasses-firewalls-for-remote-access/
+https://sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis
 
 Variante Fortinet:
 
