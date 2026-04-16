@@ -17,32 +17,32 @@ Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos 
 +**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
 +**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
 
-Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
++Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
-**El acceso inicial** apunta a infraestructura perimetral: VPN s Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
++**El acceso inicial** apunta a infraestructura perimetral: VPN s Ivanti Connect Secure, dispositivos de red Cisco y Juniper, firewalls Fortinet y hosts VMware ESXi, Exchange Server, phissing email, cadena de suministro.. Las herramientas posteriores a la explotación incluyen CrossC2, TinyShell, escáneres de fuerza bruta SSH y registradores de teclas ELF personalizados con listas de credenciales conscientes de telecomunicaciones que hacen referencia a términos como "imsi".
 
 Rapid7 ha coordinado con los CERT nacionales y socios gubernamentales para notificar a las organizaciones afectadas. La firma lanzó un script de escaneo gratuito y de código abierto capaz de detectar variantes tanto antiguas como nuevas de BPFdoor para ayudar a las organizaciones en la validación rápida de exposición. 
 
-### 2. El Malware: BPFdoor, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
++### 2. El Malware: BPFdoor, una puerta trasera (backdoor) para Linux sigilosa que opera a nivel de **kernel**.
 
-**BPFdoor:** Una puerta trasera a nivel de kernel, imita procesos legítimos en servidores bare-metal HPE ProLiant, https://www.hpe.com/es/es/hpe-proliant-compute.html/ suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
++**BPFdoor:** Una puerta trasera a nivel de kernel, imita procesos legítimos en servidores bare-metal HPE ProLiant, https://www.hpe.com/es/es/hpe-proliant-compute.html/ suplantando específicamente a hpasmlited  ..  también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
-La investigación realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por un estado, llevada a cabo por **Red Menshen**.. https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/  
++La investigación realizada por Rapid7 Labs ha expuesto una sofisticada campaña de espionaje patrocinada por un estado, llevada a cabo por **Red Menshen**.. https://www.rapid7.com/blog/post/tr-bpfdoor-telecom-networks-sleeper-cells-threat-research-report/  
 publicados el 26 de marzo de 2026, los hallazgos revelan persistencia y posicionamiento a largo plazo dentro de las redes troncales que sostienen las comunicaciones nacionales e internacionales.
 
 <img style="float:left" alt="2" src="https://github.com/hackingyseguridad/APT41/blob/main/2.png">
-
-**Filtro de Paquetes Berkeley Extendido.** eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta en el kernel Linux, pero que se gestiona desde el espacio de usuario. Una especie de híbrido entre las aplicaciones de espacio de usuario y los módulos del kernel de Linux. BPFDoor utiliza filtros de socket para permitir comunicaciones sigilosas. Puede recibir comandos en cualquier puerto del sistema ya que el programa eBPF que utiliza ve todo el tráfico entrante.
-
-**Filtros de paquetes de Berkeley (BPF)**, ejemplo, llamadas tambien expresiones: 
-<img style="float:left" alt="3" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
 
 **BPF:**  es una tecnología del kernel que permite ejecutar código de forma segura en respuesta a eventos de red. Tradicionalmente se usa para herramientas como tcpdump, Wireshark, Tshark,...;  **BPFdoor** abusa de esta funcionalidad al inyectar un filtro BPF personalizado directamente en el kernel. Este filtro inspecciona silenciosamente todo el tráfico entrante sin necesidad de:
 - Abrir puertos de escucha (no aparece en netstat o ss).
 - Generar tráfico de comando y control (C2) visible.
 - Dejar procesos en espacio de usuario que puedan ser detectados fácilmente.
 
-utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
++**Filtro de Paquetes Berkeley Extendido.** eBPF permite a los usuarios instalar código de forma dinámica que se ejecuta en el kernel Linux, pero que se gestiona desde el espacio de usuario. Una especie de híbrido entre las aplicaciones de espacio de usuario y los módulos del kernel de Linux. BPFDoor utiliza filtros de socket para permitir comunicaciones sigilosas. Puede recibir comandos en cualquier puerto del sistema ya que el programa eBPF que utiliza ve todo el tráfico entrante.
+
+**Filtros de paquetes de Berkeley (BPF)**, ejemplo, llamadas tambien expresiones: 
+<img style="float:left" alt="3" src="https://github.com/hackingyseguridad/APT41/blob/main/3.png">
+
++ utiliza esta tecnología del kernel para inspeccionar el tráfico de red sin abrir puertos de escucha. Esto significa que herramientas como `netstat`, `ss` o `nmap` no detectan nada inusual; el sistema parece "limpio".
 **El activador o "Paquete Mágico";** el implante permanece dormido hasta que recibe un paquete especialmente diseñado con una secuencia de bytes específica (un "paquete mágico"). al detectarlo, el malware activa una terminal de comandos (*Shell*) para el atacante.
 **Evasión de firewall;** Como el filtro BPF actúa a un nivel muy bajo en el núcleo, puede ver y procesar el paquete antes de que el firewall local del sistema operativo tenga oportunidad de bloquearlo.
 
@@ -52,21 +52,21 @@ eBPF: (Extended Berkeley Packet Filter) es una tecnología en el kernel de Linux
 
 Técnicas de Infiltración y Modificación: Rootkits de Kernel (LKM): Cargan "Linux Kernel Modules" maliciosos que interceptan llamadas al sistema (syscall hooking). Esto les permite alterar lo que el sistema operativo "ve", ocultando archivos o procesos antes de que lleguen al espacio de usuario. Manipulación de /proc y /sys: Si tienen permisos de escritura, modifican estos sistemas de archivos virtuales para cambiar parámetros de red y memoria en tiempo real sin reiniciar. Direct Kernel Object Manipulation (DKOM): Acceden directamente a la memoria /dev/mem para modificar estructuras de datos del kernel, permitiendo saltarse filtros de seguridad o esconder rutas de red. eBPF Malicioso: Utilizan herramientas modernas del kernel para inyectar programas que filtran o modifican el tráfico de red y los datos del sistema de manera casi invisible.
 
-**eBPFdoor, escucha el trafico en las tramas Ethernet (Capa 2) antes de que el firewall del sistema las vea en las capas OSI de Red (3) y transporte (4): inspecciona cada paquete que llega a la interfaz de red en busca de una "palabra mágica" (magic packet) en el payload (por ejemplo, los bytes 0x7255 en UDP o 0x5293 en TCP)**. 
++ **eBPFdoor, escucha el trafico en las tramas Ethernet (Capa 2) antes de que el firewall del sistema las vea en las capas OSI de Red (3) y transporte (4): inspecciona cada paquete que llega a la interfaz de red en busca de una "palabra mágica" (magic packet) en el payload (por ejemplo, los bytes 0x7255 en UDP o 0x5293 en TCP)**. 
 
 La evasión: El filtro está programado para descartar (dropear) silenciosamente los paquetes que no le interesan. Como tcpdump y Wireshark también capturan paquetes en este mismo nivel (AF_PACKET), el filtro malicioso puede ejecutarse antes y ocultar el tráfico que no quiere que sea visto. Es como si el malware le quitara los paquetes a las herramientas de monitoreo.
 
 La intercepción ultra-Temprana (eBPF con XDP) Esta es una técnica más nueva y potente, utilizada por rootkits como LinkPro y mencionada en investigaciones sobre BPFDoor avanzado . Utiliza eBPF en el modo XDP (eXpress Data Path). El programa XDP se ejecuta dentro del driver de la tarjeta de red, incluso antes de que el paquete entre al kernel de Linux .
 
-La evasión: En este punto, tcpdump y Wireshark (que dependen de la pila de red del kernel) ni siquiera han visto el paquete. El rootkit XDP puede analizar, redirigir o dropear el paquete sin dejar absolutamente ningún rastro para las herramientas de monitoreo convencionales. Es la máxima expresión de invisibilidad .
++La evasión: En este punto, tcpdump y Wireshark (que dependen de la pila de red del kernel) ni siquiera han visto el paquete. El rootkit XDP puede analizar, redirigir o dropear el paquete sin dejar absolutamente ningún rastro para las herramientas de monitoreo convencionales. Es la máxima expresión de invisibilidad .
 
-La capacidad de evasión de estos malware va más allá de ocultar el tráfico. También se ocultan a sí mismos para que no puedas encontrar el origen del problema: Ocultación de procesos y archivos: Rootkits como LinkPro y Singularity utilizan hooks eBPF (en sistemas de archivos como getdents) para interceptar llamadas al sistema. Cuando ejecutas ps o ls para buscar el malware, el rootkit filtra los resultados y elimina su propio nombre y PID de la lista, haciéndose invisible. Auto-ocultamiento de los Programas eBPF: Lo más sofisticado es que pueden ocultarse a sí mismos de herramientas de diagnóstico. Por ejemplo, LinkPro hookea la llamada al sistema sys_bpf. Esto significa que si ejecutas bpftool prog list (la herramienta estándar para ver programas eBPF), el rootkit intercepta la solicitud y elimina su propio programa de la lista .
++La capacidad de evasión de estos malware va más allá de ocultar el tráfico. También se ocultan a sí mismos para que no puedas encontrar el origen del problema: Ocultación de procesos y archivos: Rootkits como LinkPro y Singularity utilizan hooks eBPF (en sistemas de archivos como getdents) para interceptar llamadas al sistema. Cuando ejecutas ps o ls para buscar el malware, el rootkit filtra los resultados y elimina su propio nombre y PID de la lista, haciéndose invisible. Auto-ocultamiento de los Programas eBPF: Lo más sofisticado es que pueden ocultarse a sí mismos de herramientas de diagnóstico. Por ejemplo, LinkPro hookea la llamada al sistema sys_bpf. Esto significa que si ejecutas bpftool prog list (la herramienta estándar para ver programas eBPF), el rootkit intercepta la solicitud y elimina su propio programa de la lista .
 
-**Cómo actúa el implante malicioso:**
++**Cómo actúa el implante malicioso:**
 
 -Victim Linux Host (Host Linux Víctima): El atacante ha instalado un "BPF Implant".
 
--Magic Packet (Paquete Mágico): El Attacker/Controller (Atacante/Controlador) envía un paquete especial diseñado para activar el malware "durmiente".
+-Magic Packet (Paquete Mágico): El Attacker/Controller (Atacante/Controlador) envía un paquete especial diseñado para activar el malware que permanecia en estado "durmiente".
 
 -BPF Filter (Magic Packet Pattern):El malware instala un filtro en el kernel (usando el lenguaje BPF) que dice: "Ignora todo, a menos que veas un paquete ICMP que contenga este valor específico en el campo de datos"; como este filtrado es a un nivel muy bajo en el núcleo (Kernel), puede ver el paquete antes de que cualquier firewall local lo bloquee.
 
@@ -76,9 +76,9 @@ La capacidad de evasión de estos malware va más allá de ocultar el tráfico. 
 
 BPFdoor usa principalmente BPF, mientras que variantes del malware más modernas como Symbiote (Fortinet) usan eBPF para mayor complejidad.
 
-**Paquete magico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
++**Paquete magico,** a diferencia del malware convencional, BPFdoor no abre puertos de escucha ni genera balizamiento visible de comando y control. En su lugar, **instala un filtro BPF personalizado dentro del kernel que inspecciona silenciosamente el tráfico entrante, activándose solo cuando recibe un "paquete mágico"** especialmente diseñado que contiene una secuencia de bytes predefinida. Herramientas como netstat, ss o nmap no muestran nada inusual; el sistema parece completamente limpio.
 
-### 3. otras técnicas avanzadas de sigilo y camuflaje
++### 3. otras técnicas avanzadas de sigilo y camuflaje
 
 El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
 
@@ -86,13 +86,13 @@ El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
 
 **Regla Mágica (Offset Fixo):** Utilizan un marcador ("9999") en desplazamientos fijos de 26 o 40 bytes para asegurar que el comando sobreviva a la reescrita de cabeceras de los proxies.
 
-**Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
++**Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
 
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
 Rapid7 Labs identificó una variante de BPFdoor no documentada anteriormente que mejora significativamente sus capacidades de sigilo. En lugar de depender de un paquete mágico detectable, la variante actualizada ahora oculta los desencadenantes de comandos dentro del tráfico HTTPS legítimo, explotando puntos de terminación SSL como balanceadores de carga y proxies inversos para entregar comandos de activación después del descifrado en la zona de red interna.
 
-La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
++La variante también emplea un canal de control basado en ICMP, donde los servidores comprometidos se transmiten comandos entre sí utilizando paquetes ICMP manipulados incrustados con el valor 0xFFFFFFFF como una señal terminal de "no reenviar", permitiendo la propagación lateral sin tráfico C2 estándar.
 
 <img style="float:left" alt="5" src="https://github.com/hackingyseguridad/APT41/blob/main/5.png">
 
@@ -110,16 +110,16 @@ El Nodo C devuelve un shell al Nodo B, dando acceso al atacante.
 
 Resumen: Se salta el aislamiento del núcleo (Nodo C) usando ICMP como transporte, con el Nodo B como puente.
 
-Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
++Comunicación lateral con ICMP: **Los servidores comprometidos pueden comunicarse entre sí usando paquetes ICMP** personalizados con un valor específico (0xFFFFFFFF), permitiendo la propagación lateral sin generar tráfico de comando y control tradicional.
 
-protocolo ICMP (Internet Control Message Protocol) generalmente utilizado para diagnósticos simples como ping para transportar datos maliciosos y comandos. El malware abre un "raw socket" que le permite ver todos los paquetes que llegan a la interfaz de red antes de que el firewall local del sistema operativo los procese. Puede responder a paquetes ICMP manipulados incluso si el firewall está configurado para bloquear todo el tráfico entrante, ya que el filtro BPF "secuestra" el paquete antes de que el kernel lo descarte
++protocolo ICMP (Internet Control Message Protocol) generalmente utilizado para diagnósticos simples como ping para transportar datos maliciosos y comandos. El malware abre un "raw socket" que le permite ver todos los paquetes que llegan a la interfaz de red antes de que el firewall local del sistema operativo los procese. Puede responder a paquetes ICMP manipulados incluso si el firewall está configurado para bloquear todo el tráfico entrante, ya que el filtro BPF "secuestra" el paquete antes de que el kernel lo descarte
 
 Flujo de Ataque: Del L1 al Núcleo Aislado (L3)El ataque se divide en capas para alcanzar el HSS (Home Subscriber Server) en el núcleo aislado, un componente crítico en redes de telecomunicaciones.PasoAcciónDescripción Técnica1 & 2Acceso InicialEl atacante toma control del Nodo B (Servidor Interno) a través de un Proxy inverso (Nodo A). Se prepara un listener (nc -lvnp 9000) para recibir la shell.3 & 4Activación del TúnelEl controlador envía una señal al Nodo B. El implante intercepta esta señal y genera un ICMP Echo Request (Ping) hacia el Nodo C.5Propagación LateralEl Nodo C (también infectado) recibe el paquete ICMP. Al detectar la firma maliciosa en el payload, ejecuta una shell y la "devuelve" al Nodo B, permitiendo al atacante operar en la capa L3.
 
 El valor hexadecimal 0xFFFFFFFF actúa como un carácter de escape o terminación. Indica al implante que el comando ha llegado a su destino final y no debe seguir saltando a otros nodos. Esto evita bucles infinitos y reduce el "ruido" en la red, haciendo que el tráfico parezca una serie de pings normales y no un escaneo de red o una exfiltración masiva. 0xFFFFFFFF. Sería bueno aclarar que esto se inserta en el Payload (datos) del paquete ICMP Echo Request, no en la cabecera estándar, lo que lo hace pasar desapercibido para firewalls que solo miran cabeceras.
 ICMP  esta permitido incluso entre redes, para monitoreo de disponibilidad, considerándolo de bajo riesgo; "salta" de la zona desmilitarizada (DMZ) al núcleo de la red (Core) usando los mismos canales que usan las herramientas de red legítimas.
 
-El tunel se hace por encapsulación ICMP Echo Reply, cuando hay FW pero permiten ping
++El tunel se hace por encapsulación ICMP Echo Reply, cuando hay fireall que bloquean protocolos y puertos, pero permiten ping
 TCP ( reverse Shell), tunel DNS por encapsulación DNS, o descarga un binario adicional para activar FTP o SCP, para exfiltrar archivos
 La exfiltración no siempre es por ICMP. ICMP , lo más común es que use una Shell Inversa sobre TCP (disfrazada de tráfico web) más rápida y estable para mover datos que el envío de miles de pings individuales
 para las Shell hace uso de agetty o Shells Interactivas ( kworker, syslogd)
