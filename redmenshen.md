@@ -9,7 +9,7 @@ Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos 
 
 +Hackers del grupo ATP Chino Red Menshen. instalan "implantes" binarios con puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF) dentro del núcleo de un operador telecomunicación.
 
-+Red Menshen ha atacado a proveedores de telecomunicaciones en **Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio**, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
++Red Menshen ha atacado a proveedores de telecomunicaciones en **Corea del Sur  SK Telecom https://www.swissinfo.ch/spa/el-ciberataque-masivo-al-operador-m%C3%B3vil-sk-telecom-se-debi%C3%B3-a-una-seguridad-insuficiente/89630138 , Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio**, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
