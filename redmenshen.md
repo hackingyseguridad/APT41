@@ -224,6 +224,7 @@ https://medium.com/s2wblog/detailed-analysis-of-bpfdoor-targeting-south-korean-c
 https://hackers-arise.com/compromising-telecom-systems-deploying-and-detecting-the-bpfdoor-backdoor/
 https://www.youtube.com/watch?v=5kOQg-eCPu4
 https://www.youtube.com/shorts/BTQX9oBn3dw
+https://www.bleepingcomputer.com/news/security/bpfdoor-stealthy-linux-malware-bypasses-firewalls-for-remote-access/
 
 Variante Fortinet:
 
