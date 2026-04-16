@@ -86,7 +86,13 @@ El informe de Rapid7 Labs destaca una evolución en las tácticas del grupo:
 
 **Regla Mágica (Offset Fixo):** Utilizan un marcador ("9999") en desplazamientos fijos de 26 o 40 bytes para asegurar que el comando sobreviva a la reescrita de cabeceras de los proxies.
 
+
+
 +**Propagación Lateral vía ICMP:** Los servidores ya comprometidos se comunican entre sí mediante paquetes ICMP (pings) manipulados con el valor `0xFFFFFFFF`. Esto permite saltar entre zonas de red (de la DMZ al Core) sin generar tráfico de Comando y Control (C2) detectable.
+
+<img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/6a.png">
+
+<img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/6b.png">
 
 Nueva variante más sigilosa: Los comandos de activación ya no se envían como **"paquetes mágicos"** fácilmente detectables, sino que se ocultan dentro del tráfico HTTPS legítimo, aprovechando los puntos de terminación SSL (como balanceadores de carga) para activarse tras el descifrado.
 
