@@ -2,20 +2,20 @@
 <img style="float:left" alt="00" src="https://github.com/hackingyseguridad/APT41/blob/main/00.png">
 
 ### 0. El Objetivo: protocolos de señalización , la inteligencia de las telecomunicaciones
-Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
++Red Menshen busca **acceso persistente a largo plazo** para la recolección de inteligencia geopolítica.
 Se enfocan en protocolos de señalización como **SS7, Diameter y SCTP**. Estos gestionan la movilidad, identidad y conectividad global de los suscriptores. lo que los hace excepcionalmente valiosos para la recopilación de inteligencia, mucho más allá de lo que permite una filtración de datos convencional..  Al controlar estos nodos, pueden rastrear ubicaciones, interceptar metadatos de comunicación y vigilar objetivos gubernamentales o diplomáticos de alto valor.  Las redes de telecomunicaciones transportan comunicaciones gubernamentales, autentican identidades, coordinan industrias críticas y procesan flujos de señalización a través de las fronteras nacionales.
 
 <img style="float:left" alt="0" src="https://github.com/hackingyseguridad/APT41/blob/main/0.png">
 
-Hackers del grupo ATP Chino Red Menshen. instalan "implantes" binarios con puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF) dentro del núcleo de un operador telecomunicación.
++Hackers del grupo ATP Chino Red Menshen. instalan "implantes" binarios con puertas traseras BPFdoor sigilosas en redes de telecomunicaciones para obtener y disponer de acceso a largo plazo, con el malware BPFDoor subsistema Berkeley Packet Filter (BPF) dentro del núcleo de un operador telecomunicación.
 
-Red Menshen ha atacado a proveedores de telecomunicaciones en **Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio**, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
++Red Menshen ha atacado a proveedores de telecomunicaciones en **Corea del Sur, Hong Kong, Myanmar, Malasia, Egipto y Oriente Medio**, con un riesgo colateral que se extiende a las redes gubernamentales que dependen de esos operadores.
 
 <img style="float:left" alt="1" src="https://github.com/hackingyseguridad/APT41/blob/main/1.png">
 
 ### 1. Acceso inicial
-**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
-**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
++**Acceso Inicial:** Suelen entrar explotando vulnerabilidades en dispositivos perimetrales como VPNs Ivanti, firewalls Fortinet, routers Cisco/Juniper y servidores VMware ESXi.
++**Defensa:** Se recomienda a los administradores de red ampliar la visibilidad hacia operaciones a nivel de kernel y monitorear el tráfico anómalo en protocolos SCTP e ICMP, donde el malware suele ocultar sus movimientos.
 
 Rapid7 ha publicado un script de detección gratuito y recomienda a los defensores ampliar la visibilidad hacia operaciones a nivel del kernel y el monitoreo de tráfico SCTP, áreas donde la mayoría de las organizaciones carecen de cobertura.
 
