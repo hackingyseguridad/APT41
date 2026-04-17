@@ -1,6 +1,6 @@
 #!/bin/sh
-# hakingyseguridad.com
-# Script SIMPLE para detectar BPFdoor via ICMP
+# hakingyseguridad.com 2026  @antonio_taboada 
+# Script SIMPLE para escanear detectar BPFdoor via ICMP
 # Busca respuesta al paquete mágico 0xFFFFFFFF
 
 FICHERO="ip.txt"
