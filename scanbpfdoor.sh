@@ -14,6 +14,7 @@ while read ip; do
 
     # Enviar ping con el patrón mágico ffffffff
     if ping -c 1 -p ffffffff -W 2 $ip > /dev/null 2>&1; then
+    nping --icmp --data-string "\x72\x55socket" $ip
         echo "¡¡¡ ALERTA !!!"
         echo ">>> $ip RESPONDE al paquete 0xFFFFFFFF <<<"
         echo ">>> POSIBLE BPFdoor DETECTADO <<<"
@@ -22,5 +23,4 @@ while read ip; do
         echo "Sin respuesta"
     fi
 done < $FICHERO
-
 echo ""
